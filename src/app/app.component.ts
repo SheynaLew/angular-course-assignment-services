@@ -8,21 +8,28 @@ import { UsersService } from './services/users.services';
 })
 export class AppComponent {
   // activeUsers = ['Max', 'Anna'];
+  activeUsers: string[] = [];
   // inactiveUsers = ['Chris', 'Manu'];
+  inactiveUsers: string[] = [];
 
   constructor(private usersService: UsersService) {};
 
-  onSetToInactive(id: number) {
-    // this.inactiveUsers.push(this.activeUsers[id]);
-    this.usersService.inactiveUsers.push(this.usersService.activeUsers[id]);
-    // this.activeUsers.splice(id, 1);
-    this.usersService.activeUsers.splice(id, 1);
+  ngOnInit() {
+    this.activeUsers = this.usersService.activeUsers;
+    this.inactiveUsers = this.usersService.inactiveUsers;
   }
 
-  onSetToActive(id: number) {
+  // onSetToInactive(id: number) {
+    // this.inactiveUsers.push(this.activeUsers[id]);
+    // this.usersService.inactiveUsers.push(this.usersService.activeUsers[id]);
+    // this.activeUsers.splice(id, 1);
+    // this.usersService.activeUsers.splice(id, 1);
+  // }
+
+  // onSetToActive(id: number) {
     // this.activeUsers.push(this.inactiveUsers[id]);
-    this.usersService.activeUsers.push(this.usersService.inactiveUsers[id]);
+    // this.usersService.activeUsers.push(this.usersService.inactiveUsers[id]);
     // this.inactiveUsers.splice(id, 1);
-    this.usersService.inactiveUsers.splice(id, 1);
-  }
+    // this.usersService.inactiveUsers.splice(id, 1);
+  // }
 }

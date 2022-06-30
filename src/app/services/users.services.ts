@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, EventEmitter } from "@angular/core";
 
 @Injectable({providedIn: 'root'})
 
@@ -17,4 +17,8 @@ export class UsersService {
     this.activeUsers.push(this.inactiveUsers[id]);
     this.inactiveUsers.splice(id, 1);
 }
+
+userSetToInactive = new EventEmitter<number>();
+
+userSetToActive = new EventEmitter<number>();
 }

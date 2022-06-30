@@ -12,7 +12,15 @@ export class AppComponent {
   // inactiveUsers = ['Chris', 'Manu'];
   inactiveUsers: string[] = [];
 
-  constructor(private usersService: UsersService) {};
+  constructor(private usersService: UsersService) {
+    this.usersService.userSetToInactive.subscribe(
+      (id: number) => this.usersService.onSetToInactive(id)
+    );
+
+    this.usersService.userSetToActive.subscribe(
+      (id: number) => this.usersService.onSetToActive(id)
+    )
+  };
 
   ngOnInit() {
     this.activeUsers = this.usersService.activeUsers;

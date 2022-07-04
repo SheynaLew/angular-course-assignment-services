@@ -1,4 +1,4 @@
-import { Component, Injectable, Input } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { UsersService } from '../services/users.services';
 
 @Component({
@@ -9,13 +9,19 @@ import { UsersService } from '../services/users.services';
 
 @Injectable()
 
-export class ActiveUsersComponent {
-  @Input() users: string[];
+export class ActiveUsersComponent implements OnInit {
+  // @Input() users: string[];
   // @Output() userSetToInactive = new EventEmitter<number>();
+  users: string[];
 
   constructor(private usersService: UsersService) {};
 
+  ngOnInit(): void {
+      this.users = this.usersService.activeUsers;
+  }
+
   onSetToInactive(id: number) {
-    this.usersService.userSetToInactive.emit(id);
+    // this.usersService.userSetToInactive.emit(id);
+    this.usersService.setToInactive(id);
   }
 }

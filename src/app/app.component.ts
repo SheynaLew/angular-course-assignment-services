@@ -13,13 +13,6 @@ export class AppComponent {
   inactiveUsers: string[] = [];
 
   constructor(private usersService: UsersService) {
-    this.usersService.userSetToInactive.subscribe(
-      (id: number) => this.usersService.onSetToInactive(id)
-    );
-
-    this.usersService.userSetToActive.subscribe(
-      (id: number) => this.usersService.onSetToActive(id)
-    )
   };
 
   ngOnInit() {

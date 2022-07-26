@@ -13,11 +13,10 @@ export class UsersService {
   inactiveUsers = ['Chris', 'Manu'];
 
 
-  setToInactive(id: number, n: number) {
+  setToInactive(id: number) {
     this.inactiveUsers.push(this.activeUsers[id]);
     this.activeUsers.splice(id, 1);
-    n = 1;
-    this.counterService.incrementInactive(n);
+    this.counterService.incrementInactive();
 
 
     // this.counterService.activeToInactive = this.counterService.activeToInactive + 1;
@@ -25,11 +24,10 @@ export class UsersService {
 
 }
 
-  setToActive(id: number, n: number) {
+  setToActive(id: number) {
     this.activeUsers.push(this.inactiveUsers[id]);
     this.inactiveUsers.splice(id, 1);
-    n = 1;
-    this.counterService.incrementActive(n);
+    this.counterService.incrementActive();
 
     // this.counterService.inactiveToActive = this.counterService.inactiveToActive + 1;
     // console.log("inactiveToActive", this.counterService.inactiveToActive);
